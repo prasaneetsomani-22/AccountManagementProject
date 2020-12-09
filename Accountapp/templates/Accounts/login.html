@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Account Manager</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<style type="text/css">
+		
+		@media (min-width: 576px){	
+			.card{
+				width: 30%;
+				margin: 50px auto;
+			}
+		}
+	</style>
+
+</head>
+<body>
+	<div>
+		<nav class="navbar navbar-dark bg-dark">
+  <!-- Navbar content -->
+  			<h1 class="navbar-brand">ACCOUNT MANAGER</h1>
+  			
+		</nav>
+	</div>
+		{% block content %}
+			<div class="m-3">
+				<div class="card">
+				  <h5 class="card-header text-center">LOGIN</h5>
+				  <div class="card-body">
+						<form method="POST">
+							{% csrf_token %}
+							<div class="form-group">
+							    <label for="exampleInputEmail1">Username</label>
+							    <input type="text" class="form-control" name="username">
+							    
+							</div>
+							<div class="form-group">
+							    <label for="exampleInputPassword1">Password</label>
+							    <input type="password" class="form-control" name="password">
+							</div>
+							</div>
+							<button type="submit" class="btn btn-dark" style="width: 50%;margin: 10px auto;">LOGIN</button>
+							<p class="text-center">Forgot Password??<a href="{% url 'reset_password' %}">click here</a></p>
+							<p class="text-center">Don't have an account??<a href="{% url 'Registeration' %}">click here</a></p>
+						</form>
+				  </div>
+				</div>
+			</div>
+		{% endblock %}
+</body>
+</html>
+

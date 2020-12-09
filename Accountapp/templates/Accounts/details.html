@@ -1,0 +1,93 @@
+{% extends 'Accounts/base.html' %}
+
+{% block content %}
+	
+		
+		
+		
+		
+	
+ <div class="text-center">	
+	<div class="row">
+	  <div class="col-sm-4">
+	    <div class="card text-center" style="width: 70%;margin: 10px auto">
+		  <div class="card-header">
+		    Account No.
+		  </div>
+		  <div class="card-body">
+		    <h5 class="card-title">{{details.Account_number}}</h5>
+		    
+		    
+		  </div>
+		</div>
+	  </div>
+	  <div class="col-sm-4">
+	    <div class="card text-center" style="width: 70%;margin: 10px auto">
+		  <div class="card-header">
+		    Account Holder Name
+		  </div>
+		  <div class="card-body">
+		    <h5 class="card-title">{{details.Account_holder_name}}</h5>
+		    
+		    
+		  </div>
+		</div>
+	  </div>
+	  <div class="col-sm-4">
+	    <div class="card text-center" style="width: 70%;margin: 10px auto">
+		  <div class="card-header">
+		    Account Balance
+		  </div>
+		  <div class="card-body">
+		    <h5 class="card-title">{{details.Account_balance}}</h5>
+		    
+		    
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!-- <div class="search">
+		<form method=get style="padding: 30px">
+				{% csrf_token %}
+				<label>Transaction Type</label>
+				{{filter.form.transaction_type}}
+				<label>Description</label>
+				{{filter.form.description}}		
+				{{filter.form.as_p}}												
+				<button type="submit" class="btn btn-dark">Search</button>
+		
+		</form>
+	</div> -->
+	<a href="{% url 'Add_transaction' id1=details.pk %}"><button type="button" class="btn btn-dark">ADD TRANSACTION</button></a>
+	<div class="m-3">
+		<h3 class="head text-center">Account Transactions</h3>
+		<div class="container">
+			<table class="table table-striped mydatatables">
+				<thead>
+			        <tr>
+			         
+			          <th scope="col">FROM ACCOUNT</th>
+			          <th scope="col">DESCRIPTION</th>
+			          <th scope="col">TRANSACTION TYPE</th>
+			          <th scope="col">AMOUNT</th>
+			          <th scope="col">EDIT</th>
+			          <th scope="col">DELETE</th>
+			        </tr>
+		      	</thead>
+		      	<tbody>
+				    {% for k in transactions %}
+				            <tr>
+				              <td>{{k.from_account}}</td>
+				              <td>{{k.description}}</td>
+				              <td>{{k.transaction_type}}</td>
+				              <td>{{k.amount}}</td>
+				              <td><a href="{% url 'Edit_details' param1=details.pk param2=k.pk %}">EDIT</a></td>
+				              <td><a href="{% url 'Delete_details' param1=details.pk param2=k.pk %}">DELETE</a></td>
+				            </tr>
+				    {% endfor %}    
+		      	</tbody>
+			</table>
+		</div>
+	</div>
+ </div>
+{% endblock %}

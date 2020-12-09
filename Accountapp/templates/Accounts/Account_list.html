@@ -1,0 +1,35 @@
+{% extends 'Accounts/base.html' %}
+
+{% block content %}
+	  <div class="detail" style="padding: 50px">
+      <div>
+        <h4>Username: {{request.user}}</h4>
+      </div>
+      <a href="{% url 'Add_account' %}"><button type="button" class="btn btn-dark">ADD ACCOUNT</button></a>  
+    </div> 
+    <h3 class="head text-center">User Accounts</h3>
+		<table class="table table-striped">
+      <thead>
+        <tr>
+         
+          <th scope="col">USER</th>
+          <th scope="col">ACCOUNT NUMBER</th>
+          <th scope="col">ACCOUNT HOLDER NAME</th>
+          <th scope="col">FOR MORE DETAILS</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in account %}
+            <tr>
+               <td>{{i.user}}</td>
+              <td>{{i.Account_number}}</td>
+              <td>{{i.Account_holder_name}}</td>
+              <td><a href="{% url 'AccountDetails' pk=i.pk%}">CLICK HERE</a></td>
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+	
+    
+{% endblock%}

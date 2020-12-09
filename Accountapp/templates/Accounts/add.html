@@ -1,0 +1,40 @@
+{% extends 'Accounts/base.html' %}
+
+{% block content %}
+			<div class="m-3">
+				<div class="card">
+				  <h3 class="card-header text-center">Add Transaction</h3>
+				  <div class="card-body" style="padding-left: 70px">
+						<form method="POST">
+							{% csrf_token %}
+							<div class="form-group">
+							    <label for="exampleInputEmail1">Amount</label>
+							    <br>
+							    <div class="input">
+							    	{{form.amount}}
+							    </div>
+							    
+							</div>
+							<div class="form-group">
+							    <label for="exampleInputEmail1">Description</label>
+							    <br>
+							    <div class="input">
+							    	{{form.description}}
+							    </div>
+							    
+							</div>
+							<div class="form-group">
+							    <label for="exampleInputEmail1">Transaction Type</label>
+							    <br>
+							    <div class="input">
+							    	{{form.transaction_type}}
+							    </div>
+							    
+							</div>
+							
+							<button type="submit" class="btn btn-dark">Add Transaction</button>										
+						</form>
+				  </div>
+				</div>
+			</div>
+{% endblock %}
